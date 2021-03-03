@@ -2,9 +2,10 @@
     agent any
 
     stages {
-        stage('on commit') {
+        stage('Build and push') {
             steps {
-                echo 'on commit'
+                echo 'builds the code using maven and publishes the artifacts'
+				bat "mvnw clean package"
             }
 			}
              stage('QA checks') {
