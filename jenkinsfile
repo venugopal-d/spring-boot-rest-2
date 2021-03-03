@@ -1,0 +1,37 @@
+ pipeline {
+    agent any
+
+    stages {
+        stage('on commit') {
+            steps {
+                echo 'on commit'
+            }
+			}
+             stage('QA checks') {
+            steps {
+                echo 'Quality checks'
+            }
+			}
+          stage('Security scans') {
+            steps {
+                echo 'Security scans'
+            }
+			}
+            stage('Build') {
+            steps {
+                echo 'Build App'
+            }
+			}
+            stage('Deploy') {
+            steps {
+                echo 'Deploy App'
+            }
+			}
+            stage('deployment validation') {
+            steps {
+                echo 'Post Deploy Check'
+            }
+        }
+    }
+}
+
