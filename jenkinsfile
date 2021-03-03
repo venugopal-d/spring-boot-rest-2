@@ -10,7 +10,7 @@
 			stage('Security scan using OWASP') {
             steps {
                 echo 'Security scans'
-				 dependencyCheck additionalArguments: '--scan=. --format=HTML', odcInstallation: 'OWASP-Dependency-Check'
+				
             }
 			}
         stage('Build and push') {
@@ -27,6 +27,7 @@
             stage('Deploy') {
             steps {
                 echo 'Deploy App'
+				bat "java -jar target\spring-boot-rest-2-0.0.1-SNAPSHOT.jar"
             }
 			}
             stage('deployment validation') {
