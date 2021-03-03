@@ -2,22 +2,24 @@
     agent any
 
     stages {
+		 stage('QA checks') {
+            steps {
+                echo 'Quality checks'
+            }
+			}
+			stage('Security scans') {
+            steps {
+                echo 'Security scans'
+            }
+			}
         stage('Build and push') {
             steps {
                 echo 'builds the code using maven and publishes the artifacts'
 				bat "mvnw clean package"
             }
 			}
-             stage('QA checks') {
-            steps {
-                echo 'Quality checks'
-            }
-			}
-          stage('Security scans') {
-            steps {
-                echo 'Security scans'
-            }
-			}
+         
+          
             stage('Build') {
             steps {
                 echo 'Build App'
