@@ -3,6 +3,8 @@
 
     stages {
 		 stage('QA checks') {
+		 
+		  parallel{
             steps {
                 echo 'Quality checks'
             }
@@ -13,15 +15,11 @@
 				
             }
 			}
+			}
         stage('Build and push') {
             steps {
                 echo 'builds the code using maven and publishes the artifacts'
 				bat "mvnw clean package"
-            }
-			}
-            stage('Build') {
-            steps {
-                echo 'Build App'
             }
 			}
             stage('Deploy') {
@@ -32,6 +30,7 @@
 			}
             stage('deployment validation') {
             steps {
+			    bat "newman run Student_Api.postman_collection.json -r html,cli"
                 echo 'Post Deploy Check'
             }
         }
