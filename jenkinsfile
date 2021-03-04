@@ -2,9 +2,8 @@
     agent any
 
     stages {
+	      parallel{
 		 stage('QA checks') {
-		 
-		  parallel{
             steps {
                 echo 'Quality checks'
             }
