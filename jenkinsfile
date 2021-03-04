@@ -2,19 +2,22 @@
     agent any
 
     stages {
-	      parallel{
-		 stage('QA checks') {
-            steps {
-                echo 'Quality checks'
-            }
+
+		stage ('Quality & Security'){
+			parallel{
+				stage('Quality Check') {
+					steps {
+						echo 'QA verified'
+					}
+				}
+				stage('Security Check') {
+					steps {
+						
+						echo 'All security checks done'
+					}
+				}
 			}
-			stage('Security scan using OWASP') {
-            steps {
-                echo 'Security scans'
-				
-            }
-			}
-			}
+        }
         stage('Build and push') {
             steps {
                 echo 'builds the code using maven and publishes the artifacts'
